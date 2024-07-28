@@ -1,6 +1,6 @@
 FROM tomcat:9
 
-ADD /target/ROOT*.war /usr/local/tomcat/webapps/
+ADD /target/*.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 

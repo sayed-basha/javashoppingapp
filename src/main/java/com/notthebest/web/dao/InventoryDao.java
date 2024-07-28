@@ -11,7 +11,7 @@ import com.notthebest.web.model.Inventory;
 
 public class InventoryDao {
 	
-	private String sqlurl = "jdbc:mysql://localhost:3306/shoppingcart";
+	private String sqlurl = "jdbc:mysql://java-mysql:3306/shoppingcart";
 	private String sqluser = "root";
 	private String sqlpass = "basha@123";
 	private String searchQuery = "SELECT * FROM inventory WHERE username=?";
