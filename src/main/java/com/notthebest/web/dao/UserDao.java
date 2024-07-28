@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class UserDao {
 	
-	private String sqlurl = "jdbc:mysql://sql-container:3306/shoppingcart";
+	private String sqlurl = "jdbc:mysql://localhost:3306/shoppingcart";
 	private String sqluser = "root";
 	private String sqlpass = "basha@123";
 	private String searchQuery = "SELECT * FROM users WHERE username=? AND password=?";
