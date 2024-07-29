@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-app-db-deployment
+  template:
+    metadata:
+      labels:
+        app: java-app-db-deployment
+    spec:
+      containers:
+      - name: java-mysql-db-url
+        image: mysql
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: java-app-db-pvc-vol
+          mountPath: "/opt/mysql"
+        env:
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: java-app-cm
+              key: DB_SCHEMA
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: java-app-secret
+              key: DB_PASSWD
+      volumes:
+      - name: java-app-db-pvc-vol
+        persistentVolumeClaim:
+          claimName: java-app-db-pvc

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: java-app-cm
+  labels:
+    app: shoppingcart
+data:
+  DB_URL: jdbc:mysql://java-mysql:3306/shoppingcart
+  DB_SCHEMA: shoppingcart
+  DB_PORT: "3306"

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-app
+  template:
+    metadata:
+      labels:
+        app: java-app
+    spec:
+      containers:
+      - name: java-app
+        image: basha999/javashoppingcart:v1.1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: java-app-cm
+              key: DB_URL
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: java-app-secret
+              key: DB_USERNAME
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: java-app-secret
+              key: DB_PASSWD
+
